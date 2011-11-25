@@ -1,0 +1,30 @@
+# Copyright 2009 Karsten Ahnert.
+# Distributed under the Boost Software License, Version 1.0. (See
+# accompanying file LICENSE_1_0.txt or copy at
+# http://www.boost.org/LICENSE_1_0.txt)
+
+lib gomp : : <name>gomp ;
+lib cuda : : <name>cudart ;
+
+
+project 
+    : requirements
+      <include>$(THRUST_ROOT)
+      <include>$(CUDA_ROOT)
+      <include>$(ODEINT_NEW_ROOT)
+      <include>../../
+      <define>BOOST_ALL_NO_LIB=1
+      <library>gomp
+      <library>cuda
+      <cxxflags>-fopenmp
+    : build-dir .
+    ;
+    
+make vel_dist_device_cu : vel_dist_device.cu : @nvcc ;
+make vel_dist_cu : vel_dist.cu : @nvcc ;
+
+actions nvcc
+{
+    /usr/local/cuda/bin/nvcc -I../../ -I$(BOOST_ROOT) -I$(CUDA_ROOT) -I$(THRUST_ROOT) -I$(ODEINT_NEW_ROOT) -I$(THRUST_EXT_ROOT) -arch sm_13 -O3 -lgomp -lcudart $(>) -o $(<) 
+}
+

@@ -1,0 +1,26 @@
+# Copyright 2010 Karsten Ahnert
+# Distributed under the Boost Software License, Version 1.0. (See
+# accompanying file LICENSE_1_0.txt or copy at
+# http://www.boost.org/LICENSE_1_0.txt)
+
+import boost ;
+import os ;
+import path ;
+
+boost.use-project ;
+
+
+path-constant BOOST_ROOT : [ os.environ BOOST_ROOT ] ;
+path-constant CUDA_ROOT : [ os.environ CUDA_ROOT ] ;
+path-constant THRUST_ROOT : [ os.environ THRUST_ROOT ] ;
+path-constant ODEINT_NEW_ROOT : [ os.environ ODEINT_NEW_ROOT ] ;
+path-constant THRUST_EXT_ROOT : [ os.environ THRUST_EXT_ROOT ] ;
+
+project 
+   : requirements
+     <library>/boost//headers
+     ;
+
+build-project stuff/testing ;
+build-project stuff/performance ;
+build-project app/performance/poiseuille ;

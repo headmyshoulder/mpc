@@ -1,0 +1,14 @@
+analysis/velocity_dist
+* generalize for arbitrary direction
+* templatize vector type and use thrust::for_each for iteration
+
+generalize index_caller 
+
+app/performance
+
+1. original vs. new implementation, different system sizes and a=5, a=15
+2. compare:
+   * original vs. new-1core, new-2core, new-4core @home
+   * original vs. new-1core, new-2core, new-4core, new-8core, new-12core @susy
+   * original vs. new-1core, new-cuda
+    
