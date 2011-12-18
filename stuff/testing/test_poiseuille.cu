@@ -21,7 +21,7 @@
 
 #include <boost/static_assert.hpp>
 #include <boost/type_traits.hpp>
-#include <boost/random.hpp>
+#include <boost/random/mersenne_twister.hpp>
 
 // thrust includes
 #include <thrust/device_vector.h>
@@ -54,6 +54,7 @@
 using namespace std;
 using namespace mpc2;
 namespace fusion = boost::fusion;
+
 
 using boost::numeric::odeint::range_algebra;
 using boost::numeric::odeint::thrust_algebra;

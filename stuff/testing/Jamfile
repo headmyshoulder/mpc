@@ -6,7 +6,6 @@
 lib gomp : : <name>gomp ;
 lib cuda : : <name>cudart ;
 
-
 project 
     : requirements
       <include>$(THRUST_ROOT)
@@ -31,6 +30,6 @@ make test_vel_dist_cu : test_vel_dist.cu : @nvcc ;
 
 actions nvcc
 {
-    /usr/local/cuda/bin/nvcc -I../../ -I$(BOOST_ROOT) -I$(CUDA_ROOT) -I$(THRUST_ROOT) -I$(ODEINT_NEW_ROOT) -I$(THRUST_EXT_ROOT) -arch sm_13 -O3 -lgomp -lcudart $(>) -o $(<) 
+    /usr/local/cuda/bin/nvcc -I../../ -I$(BOOST_ROOT) -I$(CUDA_ROOT) -I$(THRUST_ROOT) -I$(ODEINT_NEW_ROOT) -I$(THRUST_EXT_ROOT) -arch sm_13 -O3 --compiler-bindir=/usr/bin/g++-4.4 -Xcompiler -fopenmp -DTHRUST_DEVICE_BACKEND=THRUST_DEVICE_BACKEND_OMP -lgomp -lcudart $(>) -o $(<) 
 }
 

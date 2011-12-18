@@ -16,7 +16,6 @@
 #include <boost/fusion/sequence.hpp>
 #include <boost/fusion/algorithm.hpp>
 #include <boost/fusion/container.hpp>
-#include <boost/random.hpp>
 
 // algebra includes
 #include <boost/numeric/odeint/algebra/range_algebra.hpp>
@@ -26,6 +25,7 @@
 #include <mpc/maxwell_velocity.hpp>
 #include <mpc/boundaries.hpp>
 #include <mpc/streaming.hpp>
+#include <mpc/drand48_generator.hpp>
 
 
 using namespace std;
@@ -76,8 +76,7 @@ const value_type mass = 1.0;
 int main( int argc , char **argv )
 {
 	srand48( 325345777 );
-	typedef boost::mt19937 rng_type;
-	rng_type rng;
+	drand48_generator rng;
 
 
 	// initialize the solvent particles

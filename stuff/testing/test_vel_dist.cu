@@ -7,7 +7,7 @@
 #include <thrust/host_vector.h>
 
 // includes from boost
-#include <boost/random.hpp>
+#include <boost/random/mersenne_twister.hpp>
 
 #include <mpc/point.hpp>
 #include <mpc/mass_point.hpp>

@@ -13,8 +13,8 @@ dim_param_list += [ [   60 , 15 , 5 ] ]
 dim_param_list += [ [  120 , 15 , 5 ] ]
 dim_param_list += [ [  240 , 15 , 5 ] ]
 dim_param_list += [ [  480 , 15 , 5 ] ]
-dim_param_list += [ [  960 , 15 , 5 ] ]
-dim_param_list += [ [  1920 , 15 , 5 ] ]
+#dim_param_list += [ [  960 , 15 , 5 ] ]
+#dim_param_list += [ [  1920 , 15 , 5 ] ]
 #dim_param_list += [ [   30 , 15 , 15 ] ]
 #dim_param_list += [ [   60 , 15 , 15 ] ]
 #dim_param_list += [ [  120 , 15 , 15 ] ]
@@ -23,17 +23,17 @@ dim_param_list += [ [  1920 , 15 , 5 ] ]
 #dim_param_list += [ [  960 , 480 , 15 ] ]
 
 run_param_list = list()
-# run_param_list  += [ [ "std::vector" , False , 0 ] ]
+run_param_list += [ [ "std::vector" , False , 0 ] ]
 run_param_list += [ [ "thrust::device_vector" , False , 0 ]]
-# run_param_list += [ [ "thrust::device_vector" , True , 1  ] ]
+run_param_list += [ [ "thrust::device_vector" , True , 1  ] ]
 # run_param_list += [ [ "thrust::device_vector" , True , 2 ] ]
-# run_param_list += [ [ "thrust::device_vector" , True , 4 ] ]
+run_param_list += [ [ "thrust::device_vector" , True , 4 ] ]
 
 param_list = get_param_list( dim_param_list , run_param_list )
 
 template_name = "poiseuille_template.cu"
 template_str = get_template_string( template_name )
-dir = "res_landau_gpu"
+dir = "res_home2"
 
 create_dir_structure( dir )
 
@@ -95,5 +95,6 @@ for p in param_list :
     for res in result :
         line = ""
         for r in res :
-            line += str( r ) + " " + "\n"
+            line += str( r ) + " "
+	line += "\n"
         f.write( line )

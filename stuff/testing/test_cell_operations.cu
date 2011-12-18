@@ -16,9 +16,6 @@
 #include <iostream>
 #include <vector>
 
-// includes from boost
-#include <boost/random.hpp>
-
 // thrust includes
 #include <thrust/device_vector.h>
 #include <thrust/host_vector.h>
@@ -34,7 +31,7 @@
 #include <mpc/mass_point.hpp>
 #include <mpc/indexer.hpp>
 #include <mpc/maxwell_velocity.hpp>
-
+#include <mpc/drand48_generator.hpp>
 
 
 using namespace std;
@@ -122,7 +119,7 @@ void com( MassPointVector &mp , PointVector &com , IndexVector &begins , IndexVe
 int main( int argc , char **argv )
 {
 	srand48( 325345777 );
-	typedef boost::mt19937 rng_type;
+	typedef drand48_generator rng_type;
 	rng_type rng;
 
 

@@ -11,7 +11,7 @@
 #ifdef __CUDACC__
 #define FUNC_DECL __host__ __device__
 #else
-#define FUNC_DECl
+#define FUNC_DECL
 #endif
 
 #define MPC_NAMESPACE_BEGIN namespace mpc2 {

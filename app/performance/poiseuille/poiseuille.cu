@@ -21,7 +21,6 @@
 
 #include <boost/static_assert.hpp>
 #include <boost/type_traits.hpp>
-#include <boost/random.hpp>
 
 // thrust includes
 #include <thrust/device_vector.h>
@@ -51,7 +50,7 @@
 #include <mpc/indexer.hpp>
 #include <mpc/collision.hpp>
 #include <mpc/analysis.hpp>
-
+#include <mpc/drand48_generator.hpp>
 
 
 using namespace std;
@@ -212,7 +211,8 @@ void test_poiseuille
 	{
 		cerr << "thrust::for_each()" << endl;
 		exit( -1 );
-	}}
+	}
+}
 
 
 
@@ -225,7 +225,7 @@ int main( int argc , char **argv )
 	omp_set_num_threads( 1 );
 
 	srand48( 325345777 );
-	typedef boost::mt19937 rng_type;
+	typedef drand48_generator rng_type;
 	rng_type rng;
 
 

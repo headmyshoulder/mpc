@@ -18,17 +18,18 @@ MPC_NAMESPACE_BEGIN
 template< class Algebra , class StreamingOperations >
 struct streaming
 {
+    typedef Algebra algebra_type;
 
 	template< class MassPoint , class Force , class Value , class BC >
 	static void step_a( MassPoint &mp , Force &f , Value t , Value dt , Value mass , BC bc )
 	{
-		Algebra::for_each2( mp , f , StreamingOperations::make_streaming_a( t , dt , mass , bc ) );
+		algebra_type::for_each2( mp , f , StreamingOperations::make_streaming_a( t , dt , mass , bc ) );
 	}
 
 	template< class MassPoint , class Force , class Value , class BC >
 	static void step_a( const MassPoint &mp , const Force &f , Value t , Value dt , Value mass , BC bc )
 	{
-		Algebra::for_each2( mp , f , StreamingOperations::make_streaming_a( t , dt , mass , bc ) );
+	    algebra_type::for_each2( mp , f , StreamingOperations::make_streaming_a( t , dt , mass , bc ) );
 	}
 
 

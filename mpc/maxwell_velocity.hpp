@@ -13,7 +13,9 @@
 #include <mpc/defines.hpp>
 #include <mpc/point.hpp>
 #include <mpc/point_traits.hpp>
-#include <boost/random.hpp>
+
+#include <boost/random/normal_distribution.hpp>
+#include <boost/random/variate_generator.hpp>
 
 MPC_NAMESPACE_BEGIN
 
